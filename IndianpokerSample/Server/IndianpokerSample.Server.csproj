@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	<GHPages>true</GHPages>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +15,8 @@
     <ProjectReference Include="..\Client\IndianpokerSample.Client.csproj" />
     <ProjectReference Include="..\Shared\IndianpokerSample.Shared.csproj" />
   </ItemGroup>
-
+<PropertyGroup>
+  <GHPages>true</GHPages>
+</PropertyGroup>
 
 </Project>
