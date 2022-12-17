@@ -1,18 +1,56 @@
-﻿@page "/counter"
+﻿@*@page "/counter"*@
 
-<PageTitle>Counter</PageTitle>
-
-<h1>Counter</h1>
-
-<p role="status">Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
+<div class="container text-center">
+    <div class="row justify-content-center">
+        <div>
+            <h1>EXILE TRIBEインディアンポーカー</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <img src=@imagefilePath class="img-fluid" />
+        </div>
+    </div>
+    <div class="mt-2 row justify-content-center">
+        <div class="col-4">
+            <button class="btn btn-primary" @onclick="onClick">@buttonName</button>
+        </div>
+    </div>
+</div>
 @code {
-    private int currentCount = 0;
+    private int imageCount;
+    private string imagefilePath = String.Empty;
+    private string buttonName = String.Empty;
+    private string BUTTON_STOP = "STOP!";
+    private string BUTTON_START = "START!";
+    //private int fileCount;
 
-    private void IncrementCount()
+
+    protected override void OnInitialized()
     {
-        currentCount++;
+        buttonName = BUTTON_START;
+        //fileCount = 13;
+        imagefilePath = getImageFilePath();
+    }
+
+    private void onClick()
+    {
+        if(buttonName.Equals(BUTTON_START))
+        {
+            buttonName = BUTTON_STOP;
+            imagefilePath = "Images\\exile\\random.gif";
+        } else
+        {
+            buttonName = BUTTON_START;
+            imagefilePath = getImageFilePath();
+        }
+    }
+
+    private string getImageFilePath()
+    {
+        Random r1 = new System.Random();
+        var imageIndex = r1.Next(1, 14);
+        imagefilePath = $"Images\\exile\\exile{imageIndex.ToString()}.png";
+        return imagefilePath;
     }
 }
